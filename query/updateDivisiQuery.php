@@ -9,6 +9,6 @@
                                 nama_divisi = '$nama_divisi',
                                 deskripsi = '$deskripsi'
                                 WHERE id = '$id_divisi';");
-        header("Location: ../admin.php");
+        header("Location: ../admin_divisi.php");
     };
 ?>

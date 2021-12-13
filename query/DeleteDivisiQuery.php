@@ -3,6 +3,6 @@
     if (isset($_POST["delete"])){
         $id_divisi = $_POST['id_divisi'];
         mysqli_query($koneksi, " DELETE FROM division WHERE id = $id_divisi");
-        header("Location: ../admin.php");
+        header("Location: ../admin_divisi.php");
     };
 ?>

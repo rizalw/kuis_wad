@@ -10,46 +10,8 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require("essensial/important.php") ?>
     <link rel="stylesheet" href="./assets/style/admin.css">
+    <link rel="stylesheet" href="./assets/style/admin_ext.css">
     <title>Admin Page</title>
-    <style>
-        html,
-        body {
-            width: 100%;
-        }
-
-        body {
-            background-color: #FCE5C9 !important;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        .container-for-progress {
-            background-color: #FFA077;
-            border-radius: 28px;
-        }
-
-        .flex-shrink-0 * {
-            color: white !important;
-        }
-
-        .btn-toggle::before {
-            color: white;
-        }
-
-        a.link-dark.text-decoration-none.border-bottom:hover {
-            background-color: #FF8C00 !important;
-        }
-
-        .btn-toggle:hover,
-        .btn-toggle:focus,
-        a.link-dark:hover,
-        a.link-dark:focus {
-            background-color: #ffff;
-            color: black !important;
-        }
-    </style>
 </head>
 
 <body>

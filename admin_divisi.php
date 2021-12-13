@@ -10,46 +10,8 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require("essensial/important.php") ?>
     <link rel="stylesheet" href="./assets/style/admin.css">
+    <link rel="stylesheet" href="./assets/style/admin_ext.css">
     <title>Admin Page</title>
-    <style>
-        html,
-        body {
-            width: 100%;
-        }
-
-        body {
-            background-color: #FCE5C9 !important;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        .container-for-progress {
-            background-color: #FFA077;
-            border-radius: 28px;
-        }
-
-        .flex-shrink-0 * {
-            color: white !important;
-        }
-
-        .btn-toggle::before {
-            color: white;
-        }
-
-        a.link-dark.text-decoration-none.border-bottom:hover {
-            background-color: #FF8C00 !important;
-        }
-
-        .btn-toggle:hover,
-        .btn-toggle:focus,
-        a.link-dark:hover,
-        a.link-dark:focus {
-            background-color: #ffff;
-            color: black !important;
-        }
-    </style>
 </head>
 
 <body>
@@ -86,10 +48,10 @@ session_start()
                                 <td><?php echo $data["nama_divisi"] ?></td>
                                 <td><?php echo $data["deskripsi"] ?></td>
                                 <td>
-                                    <form action="query/DeleteQuery.php" method="post">
+                                    <form action="query/DeleteDivisiQuery.php" method="post">
                                         <div class="d-flex">
                                             <input type="number" name="id_divisi" id="" value="<?php echo $data['id'] ?>" hidden>
-                                            <a href="update.php?id=<?php echo $data['id'] ?>">
+                                            <a href="updateDivisi.php?id=<?php echo $data['id'] ?>">
                                                 <input type="button" value="Update" name="update" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#updateModal">
                                             </a>
                                             <input type="submit" value="Delete" name="delete" class="btn btn-danger">
@@ -121,7 +83,7 @@ session_start()
         </div>
     </div>
     <?php
-    require("modal_insert.php");
+    require("modal_insert_divisi.php");
     ?>
     <script src="layout/sidebars.js"></script>
 </body>

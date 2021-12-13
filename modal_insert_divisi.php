@@ -5,7 +5,7 @@
             <h5 class="modal-title" id="exampleModalLabel">Masukkan Data</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="insertQuery.php" method="post">
+        <form action="query/insertQuery.php" method="post">
             <div class="modal-body">
                 <label for="" class="form-text" >Nama Divisi</label>
                 <input type="text" name="nama_divisi" id="" class="form-control">

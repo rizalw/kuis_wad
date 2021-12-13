@@ -24,7 +24,7 @@
         <div class="display-5 text-center mt-5">
             Data Divisi
         </div>
-        <form action="query/updateQuery.php" method="post">
+        <form action="query/updateDivisiQuery.php" method="post">
             <?php 
                 while($data = mysqli_fetch_array($hasil)){ 
             ?>
