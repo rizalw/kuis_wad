@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
         nama_mentoring = '$nama_mentoring',
         tanggal = '$combinedDT',
         link = '$link'
-        WHERE id = $id_divisi";
+        WHERE id = $id_mentoring";
     $hasil = mysqli_query($koneksi, $query);
     if ($hasil){
         $_SESSION["berhasil_update"] = "Data berhasil diupdate";
