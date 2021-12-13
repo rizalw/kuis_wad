@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    background-color: #FF8C00;
+}
+.navbar-brand img{
+    width: 48px;
+}
+.navbar-brand{
+    align-items: center;
+}
+.navbar-nav{
+    align-items: center;
+}
+.navbar-nav > *{
+    margin: 10px;
+}
+.nav-item .btn{
+    border-radius: 24px;
+}
+.aktivitas .card{
+    background-color: #FFA077;
+}
+.carousel{
+        width:100%;
+        height:auto;
+}
+
+
+.card-text .carousel{
+    width: 500px;
+}
+.deskripsi-divisi{
+    margin-bottom: 36px;
+}
+.detail-divisi .card{
+    width: 700px;
+    background-color: #FFA077;
+}
+.detail-divisi > *{
+    margin-bottom: 36px;
+}
+.tentang-kami{
+    background-color: #FFA077 ;
+    padding: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tentang-kami .flex-column .card{
+    background-color: #FCE5C9;
+}
+.hubungi-kami > *{
+    width: 600px;
+}
+form .d-flex{
+    align-items: center;
+}
+.row{
+    margin-bottom: 16px;
+}
+.alert{
+    margin-bottom: 0 !important;
+}
