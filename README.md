@@ -1,2 +1,2 @@
-# kuis_wad
+# Kuis WAD
 Ini adalah repo untuk menyimpan kuis WAD
