@@ -17,6 +17,7 @@ if (isset($_POST["submit"])) {
                 $_SESSION["nama"] = $email_split[0];
                 $_SESSION["is_login"] = "Berhasil Login";
                 $_SESSION["Status"] = true;
+                $_SESSION["role"] = $data["role"];
                 if ($data["role"] == "admin") {
                     $_SESSION["is_admin"] = true;
                     header("Location: ../admin_overview.php");

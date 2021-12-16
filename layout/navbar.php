@@ -30,6 +30,11 @@ session_start();
                         </a>
                     </li>
                 <?php else : ?>
+                    <?php if ($_SESSION["role"] == "user"):?>
+                        <li class="nav-item">
+                            <a href="./mentoring.php" class="nav-link active fs-5">Mentoring</a>
+                        </li>
+                    <?php endif;?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <?= $_SESSION["nama"] ?>
