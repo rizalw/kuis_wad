@@ -22,6 +22,7 @@ if (isset($_POST["submit"])) {
                     $_SESSION["is_admin"] = true;
                     header("Location: ../admin_overview.php");
                 } elseif ($data["role"] == "user") {
+                    $_SESSION['id'] = $data["user_id"];
                     header("Location: ../index.php");
                 };
             };

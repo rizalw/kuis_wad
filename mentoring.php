@@ -13,7 +13,14 @@
     <?php
     require("layout/navbar.php");
     require("essensial/connection.php");
+    if (isset($_SESSION["berhasil_submit"])) {
+        echo "<div class='alert alert-success d-flex justify-content-between' role='alert'>", $_SESSION['berhasil_submit'],
+        "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+        unset($_SESSION['berhasil_submit']);
+    }
     ?>
+
     <div style="background-color: #FCE5C9;" id="content" class="py-5">
         <div class="container py-4">
             <div id="mentoringmu" class="mb-5">
@@ -68,15 +75,21 @@
                         ?>
                             <tr>
                                 <th scope="row"><?= $x ?></th>
-                                <td><?= $data["nama_mentoring"]?></td>
-                                <td><?= $data["tanggal"]?></td>
-                                <!-- <?php 
+                                <td><?= $data["nama_mentoring"] ?></td>
+                                <td><?= $data["tanggal"] ?></td>
+                                <?php
                                 $id_mentoring = $data['id'];
-                                $query = "SELECT COUNT('id') FROM user_mentoring WHERE id_mentoring = $id_mentoring;";
-                                $res_count = mysqli_query($koneksi, $query);
-                                while ($data2 = mysqli_fetch_assoc($res_count))
-                                ?> -->
-                                <td></td>
+                                $query_count = "SELECT COUNT('id') as total_id FROM user_mentoring WHERE id_mentoring = $id_mentoring;";
+                                $res_count = mysqli_query($koneksi, $query_count);
+                                $data2 = mysqli_fetch_assoc($res_count);
+                                $jumlah = $data2["total_id"];
+                                if ($jumlah < 10) {
+                                    $status = "Tersedia";
+                                } else {
+                                    $status = "Penuh";
+                                }
+                                ?>
+                                <td><?= $status ?></td>
                             </tr>
                         <?php
                             $x++;
@@ -98,23 +111,30 @@
                     <h5 class="modal-title" id="exampleModalLabel">Daftar Mentoring</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="POST" class="container">
+                <form action="query/insertUserMentoring.php" method="POST" class="container">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-2">
                                 <label for="" class="form-text">Nama Mentoring</label>
                             </div>
                             <div class="col-10">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="0">Coba pertama kali updated</option>
-                                    <option value="1">Coba dua kali</option>
+                                <select class="form-select" aria-label="Default select example" name="mentoring">
+                                    <?php
+                                    $query_mentoring = "SELECT id, nama_mentoring FROM mentoring";
+                                    $res_mentoring = mysqli_query($koneksi, $query_mentoring);
+                                    while ($hasil_mentoring = mysqli_fetch_assoc($res_mentoring)) {
+                                    ?>
+                                        <option value="<?= $hasil_mentoring['id'] ?>"><?= $hasil_mentoring['nama_mentoring'] ?></option>
+                                    <?php
+                                    };
+                                    ?>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <input type="submit" value="Submit" name="submit" class="btn btn-primary">
                     </div>
                 </form>
             </div>
