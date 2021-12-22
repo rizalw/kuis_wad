@@ -1,9 +1,12 @@
 <?php
 session_start();
 if (isset($_POST["submit"])) {
-    require($_SERVER['DOCUMENT_ROOT']."/company profile_kuis/essensial/connection.php");
+    require($_SERVER['DOCUMENT_ROOT'] . "/company profile_kuis/essensial/connection.php");
     $email = $_POST["email"];
     $password = $_POST["password"];
+    if (isset($_POST["status"])) {
+        $status = $_POST["status"];
+    }
     $query = "
         SELECT * FROM user_account where email = '$email' AND password = '$password';
         ";
@@ -13,6 +16,12 @@ if (isset($_POST["submit"])) {
             header("Location: ../index.php");
         } elseif (mysqli_num_rows($hasil) == 1) {
             while ($data = mysqli_fetch_assoc($hasil)) {
+                if (isset($_POST["status"]) && in_array("true", $status)) {
+                    $value = "true";
+                    $_SESSION["email"] = $email;
+                    $_SESSION['password'] = $password;
+                    setcookie("remember", $value,  time() + 3600, "localhost");
+                }
                 $email_split = explode("@", $email);
                 $_SESSION["nama"] = $email_split[0];
                 $_SESSION["is_login"] = "Berhasil Login";
@@ -29,3 +38,4 @@ if (isset($_POST["submit"])) {
         };
     };
 };
+?>

@@ -36,12 +36,26 @@
         }
         ?>
         <div class="display-6 text-center"><b>Login</b></div>
+        <?php
+        if (isset($_SESSION["email"])){
+            $email = $_SESSION["email"];
+        } 
+        if (isset($_SESSION["password"])){
+            $password = $_SESSION["password"];
+        }
+        ?>
         <form action="query/loginQuery.php" method="POST" class="w-75 mx-auto p-3 mt-3">
             <label for="" class="form-label">Email</label>
-            <input type="text" class="form-control" placeholder="Masukkan nama emailmu" name="email" required><br>
+            <input type="text" class="form-control" placeholder="Masukkan nama emailmu" name="email" value="<?= (isset($_COOKIE["remember"])) ? $email : ''; ?>" required><br>
             <label for="" class="form-label">Password</label>
-            <input type="password" class="form-control" placeholder="Masukkan passwordmu" name="password" required><br>
-            <input type="submit" value="Login" name="submit" class="btn btn-primary form-control">
+            <input type="password" class="form-control" placeholder="Masukkan passwordmu" name="password" value="<?= (isset($_COOKIE["remember"])) ? $password : ''; ?>" required><br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="status[]" value="true" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Remember Me
+                </label>
+            </div>
+            <input type="submit" value="Login" name="submit" class="btn btn-primary form-control mt-3">
             <div class="mt-3 text-center">
                 Belum punya akun? Registrasi <a href="registrasi.php">disini</a>
             </div>

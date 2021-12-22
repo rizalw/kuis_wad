@@ -36,20 +36,47 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $id_user = $_SESSION["id"];
+                        $query_user_mentoring = "SELECT mentoring.nama_mentoring AS nama_mentoring, mentoring.tanggal AS tanggal, 
+                        user_mentoring.status AS status, user_mentoring.id_user AS id_user, mentoring.link AS link FROM mentoring  
+                        INNER JOIN user_Mentoring ON mentoring.id = user_mentoring.id_mentoring";
+                        $result_user_mentoring = mysqli_query($koneksi, $query_user_mentoring);
+                        $t = 1;
+                        if (mysqli_num_rows($result_user_mentoring) == 0) {
+                        ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mentoring Strukdat</td>
-                            <td>12 Oktober 2021</td>
-                            <td>Approved</td>
-                            <td><button class="btn btn-primary">Link Pertemuan</button></td>
+                            <td colspan="5" class="text-center">Tidak ada data pendaftaran</td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>Waiting to be approved</td>
-                            <td><button class="btn btn-primary">Link Pertemuan</button></td>
-                        </tr>
+                        <?php 
+                        } else {                        
+                            while ($isi_user_mentoring = mysqli_fetch_array($result_user_mentoring)) {
+                                if ($isi_user_mentoring["id_user"] != $_SESSION["id"]) {
+                                    continue;
+                                };
+                        ?>
+                                <tr>
+                                    <th scope="row"><?= $t ?></th>
+                                    <td><?= $isi_user_mentoring["nama_mentoring"] ?></td>
+                                    <td><?= $isi_user_mentoring["tanggal"] ?></td>
+                                    <td><?= $isi_user_mentoring["status"] ?></td>
+                                    <?php if ($isi_user_mentoring["status"] == "Verified") : ?>
+                                        <td>
+                                            <a href="<?= $isi_user_mentoring['link'] ?>">
+                                                <button class="btn btn-primary">Link Pertemuan</button>
+                                            </a>
+                                        </td>
+                                    <?php else : ?>
+                                        <td>
+                                            <button class="btn btn-secondary">Not verified yet</button>
+                                        </td>
+                                    <?php endif; ?>
+                                </tr>
+                        <?php
+                                $t++;
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

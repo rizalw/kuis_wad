@@ -13,6 +13,7 @@
                     <li><a href="./admin_overview.php" class="link-dark rounded">Overview</a></li>
                     <li><a href="./admin_divisi.php" class="link-dark rounded">Data Divisi</a></li>
                     <li><a href="./admin_mentoring.php" class="link-dark rounded">Data Mentoring</a></li>
+                    <li><a href="./admin_user_Mentor.php" class="link-dark rounded">Verifikasi Pendaftar</a></li>
                 </ul>
             </div>
         </li>
