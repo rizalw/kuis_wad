@@ -19,8 +19,8 @@ if (isset($_POST["submit"])) {
                 if (isset($_POST["status"]) && in_array("true", $status)) {
                     $value = "true";
                     $_SESSION["email"] = $email;
-                    $_SESSION['password'] = $password;
-                    setcookie("remember", $value,  time() + 3600, "localhost");
+                    $_SESSION["password"] = $password;
+                    setcookie("remember", $value,  time() + 3600, "/");
                 }
                 $email_split = explode("@", $email);
                 $_SESSION["nama"] = $email_split[0];
